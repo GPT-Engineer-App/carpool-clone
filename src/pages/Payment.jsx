@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -11,6 +13,8 @@ const Payment = () => {
     amount: "",
   });
 
+  const [paymentMethod, setPaymentMethod] = useState("card");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setPaymentData((prevData) => ({
@@ -21,7 +25,7 @@ const Payment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Payment submitted:", paymentData);
+    console.log("Payment submitted:", { ...paymentData, paymentMethod });
     // Add payment processing logic here
   };
 
@@ -34,24 +38,43 @@ const Payment = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <Input
-              name="cardNumber"
-              placeholder="Card Number"
-              value={paymentData.cardNumber}
-              onChange={handleChange}
-            />
-            <Input
-              name="expiryDate"
-              placeholder="Expiry Date"
-              value={paymentData.expiryDate}
-              onChange={handleChange}
-            />
-            <Input
-              name="cvv"
-              placeholder="CVV"
-              value={paymentData.cvv}
-              onChange={handleChange}
-            />
+            <RadioGroup
+              value={paymentMethod}
+              onValueChange={setPaymentMethod}
+              className="flex space-x-4"
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="card" id="card" />
+                <Label htmlFor="card">Card</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="cash" id="cash" />
+                <Label htmlFor="cash">Cash</Label>
+              </div>
+            </RadioGroup>
+
+            {paymentMethod === "card" && (
+              <>
+                <Input
+                  name="cardNumber"
+                  placeholder="Card Number"
+                  value={paymentData.cardNumber}
+                  onChange={handleChange}
+                />
+                <Input
+                  name="expiryDate"
+                  placeholder="Expiry Date"
+                  value={paymentData.expiryDate}
+                  onChange={handleChange}
+                />
+                <Input
+                  name="cvv"
+                  placeholder="CVV"
+                  value={paymentData.cvv}
+                  onChange={handleChange}
+                />
+              </>
+            )}
             <Input
               name="amount"
               placeholder="Amount"
