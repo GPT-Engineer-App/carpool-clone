@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const Index = () => {
   return (
     <div className="flex flex-col items-center justify-center space-y-6">
-      <h1 className="text-3xl font-bold">Find Your Ride</h1>
+      <h1 className="text-3xl font-bold">Welcome to ShaRECarTriP</h1>
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Search for a Ride</CardTitle>
