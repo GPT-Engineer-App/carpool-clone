@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Car, Home, Search, User, UserPlus, Info, Mail, CreditCard } from "lucide-react";
+import { CircleUser, Menu, Car, Home, Search, User, UserPlus, Info, Mail, CreditCard, X } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 const navItems = [
   {
@@ -51,6 +51,11 @@ const navItems = [
     title: "Payment",
     to: "/payment",
     icon: <CreditCard className="h-4 w-4" />,
+  },
+  {
+    title: "Cancel Ride",
+    to: "/cancel-ride",
+    icon: <X className="h-4 w-4" />,
   },
 ];
 

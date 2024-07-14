@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home, Search, Car, User, UserPlus, Info, Mail, CreditCard } from "lucide-react";
+import { Home, Search, Car, User, UserPlus, Info, Mail, CreditCard, X } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/sidebar"; // Use the sidebar layout
 import Index from "./pages/Index.jsx";
@@ -12,6 +12,7 @@ import Register from "./pages/Register.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import Payment from "./pages/Payment.jsx";
+import CancelRide from "./pages/CancelRide.jsx";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,11 @@ export const navItems = [
     to: "/payment",
     icon: <CreditCard className="h-4 w-4" />,
   },
+  {
+    title: "Cancel Ride",
+    to: "/cancel-ride",
+    icon: <X className="h-4 w-4" />,
+  },
 ];
 
 const App = () => {
@@ -74,6 +80,7 @@ const App = () => {
               <Route path="about-us" element={<AboutUs />} />
               <Route path="contact-us" element={<ContactUs />} />
               <Route path="payment" element={<Payment />} />
+              <Route path="cancel-ride" element={<CancelRide />} />
             </Route>
           </Routes>
         </Router>
